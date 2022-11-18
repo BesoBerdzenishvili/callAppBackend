@@ -10,4 +10,4 @@ app.use(bodyParser());
 app.use(citizenRoutes.routes()).use(citizenRoutes.allowedMethods());
 
 app.listen(port);
-console.log("Application is running on port" + port);
+console.log("Application is running on http://localhost:" + port);
