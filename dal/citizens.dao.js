@@ -3,8 +3,9 @@ const citizens = require("./index").db("store").collection("citizens");
 const ObjectId = require("mongodb").ObjectId;
 
 //Create
-const save = async ({ name, email, gender, address, phone }) => {
+const save = async ({ id, name, email, gender, address, phone }) => {
   const result = await citizens.insertOne({
+    id,
     name,
     email,
     gender,
@@ -26,11 +27,11 @@ const getById = async (id) => {
   return await citizens.findOne({ _id: ObjectId(id) });
 };
 //Update
-const update = async (id, { name, email, gender, address, phone }) => {
+const update = async (_id, { id, name, email, gender, address, phone }) => {
   console.log(id);
   const result = await citizens.replaceOne(
-    { _id: ObjectId(id) },
-    { name, email, gender, address, phone }
+    { _id: ObjectId(_id) },
+    { id, name, email, gender, address, phone }
   );
   return result.insertedId;
 };

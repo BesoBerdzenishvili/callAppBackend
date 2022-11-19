@@ -6,8 +6,9 @@ const {
   update,
 } = require("../dal/citizens.dao");
 
-const createCitizen = async ({ name, email, gender, address, phone }) => {
+const createCitizen = async ({ id, name, email, gender, address, phone }) => {
   const citizen = {
+    id,
     name,
     email,
     gender,
@@ -30,7 +31,7 @@ const deleteCitizen = async (id) => {
 };
 
 const updateCitizen = async (id, { name, email, gender, address, phone }) => {
-  return await update(id, { name, email, gender, address, phone });
+  return await update(id, { id, name, email, gender, address, phone });
 };
 
 module.exports = {

@@ -9,5 +9,10 @@ app.use(bodyParser());
 
 app.use(citizenRoutes.routes()).use(citizenRoutes.allowedMethods());
 
+app.use(async (ctx, next) => {
+  console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
+  await next();
+});
+
 app.listen(port);
 console.log("Application is running on http://localhost:" + port);
